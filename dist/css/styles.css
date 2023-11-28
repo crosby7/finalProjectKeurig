@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "RedHatDisplay";
+  src: url("../fonts/RedHatDisplay-VariableFont_wght.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "RedHatDisplay", Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-bottom: 16px;
+}
+
+.navHolder {
+  width: 100%;
+  height: 272px;
+}
+.navHolder .bannerAd {
+  background-color: #3d5a7b;
+  color: white;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.navHolder .bannerAd span {
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0 5px;
+}
+.navHolder .bannerAd .exitBanner {
+  color: white;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.navHolder .middleNav {
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ece9e4;
+  padding: 0 40px;
+}
+.navHolder .middleNav .homeLogo svg {
+  width: 175px;
+  height: 30px;
+}
+.navHolder .middleNav .search {
+  width: 30%;
+  height: 40px;
+  background-color: white;
+  border-radius: 25px;
+}
+.navHolder .middleNav .search input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  padding-left: 30px;
+}
+.navHolder .middleNav .middleLinks {
+  width: 20%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+.navHolder .middleNav .middleLinks p {
+  width: 130px;
+  text-align: center;
+  margin-bottom: 0;
+}
+.navHolder .middleNav .middleLinks .middleList {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navHolder .bottomLinks {
+  width: 100%;
+  height: 60px;
+  padding-right: 160px;
+  padding-left: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ece9e4;
+}
+.navHolder .bottomLinks a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+.navHolder .bottomBanner {
+  width: 100%;
+  height: 92px;
+  background-color: #473036;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  text-align: center;
+}
+.navHolder .bottomBanner div {
+  font-size: 12px;
+}
+.navHolder .bottomBanner span {
+  font-size: 10px;
+}
+.navHolder .bottomBanner h1 {
+  font-weight: 100;
+  font-size: 60px;
+}
+
+.seeDetails {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=styles.css.map */
