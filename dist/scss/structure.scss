@@ -16,3 +16,13 @@ html, body {
 h1, h2, h3, h4, h5, h6, p {
  margin-bottom: 16px;
 }
+
+.contentWrap {
+    width: $site-width;
+    margin: 0 auto;
+    position: relative;
+}
+
+#app {
+    padding-bottom: 580px;
+}
