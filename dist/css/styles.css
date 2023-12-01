@@ -207,8 +207,8 @@ footer .footerBanner .bannerRight i {
 }
 footer .footerContent {
   padding: 0 20px;
+  margin-top: 20px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 footer .footerContent .shopAndOrders {
@@ -222,6 +222,68 @@ footer .footerContent .aboutUs {
 }
 footer .footerContent .mailingList {
   width: 290px;
+}
+footer .footerContent h4 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+footer .footerContent p {
+  font-weight: 400;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+footer .footerContent .mailingInputBlock {
+  display: flex;
+  align-items: center;
+}
+footer .footerContent input {
+  width: 70%;
+  height: 40px;
+  border: 2px solid grey;
+  padding-left: 10px;
+  border-right: none;
+}
+footer .footerContent .signUpMailing {
+  border: 2px solid #F9C507;
+  width: 30%;
+  height: 40px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+footer .footerContent .footerCountry {
+  margin-top: 30px;
+  border-top: 2px solid grey;
+}
+footer .footerContent .countrySelector {
+  display: flex;
+  align-items: center;
+}
+footer .footerContent .countrySelector .countryIcon {
+  margin-right: 30px;
+}
+footer .footerFinal {
+  margin-top: 30px;
+  border-top: 2px solid grey;
+}
+footer .footerFinal p {
+  font-size: 12px;
+  font-style: italic;
+}
+footer .footerFinal p span {
+  margin: 0 5px;
+  cursor: default;
+}
+footer .footerFinal .clickable {
+  cursor: pointer;
+}
+footer .footerFinal .copy, footer .footerFinal .trademarks {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .homePage {

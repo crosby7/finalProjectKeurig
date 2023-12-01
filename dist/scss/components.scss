@@ -208,8 +208,8 @@ footer {
 
     .footerContent {
         padding: 0 20px;
+        margin-top: 20px;
         display: flex;
-        align-items: center;
         justify-content: space-between;
 
         .shopAndOrders {
@@ -226,6 +226,81 @@ footer {
 
         .mailingList {
             width: 290px;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-weight: 400;
+            margin-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .mailingInputBlock {
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            width: 70%;
+            height: 40px;
+            border: 2px solid grey;
+            padding-left: 10px;
+            border-right: none;
+        }
+        
+        .signUpMailing {
+            border: 2px solid #F9C507;
+            width: 30%;
+            height: 40px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .footerCountry {
+            margin-top: 30px;
+            border-top: 2px solid grey;
+        }
+
+        .countrySelector {
+            display: flex;
+            align-items: center;
+
+            .countryIcon {
+                margin-right: 30px;
+            }
+        }
+    }
+    
+    .footerFinal {
+        margin-top: 30px;
+        border-top: 2px solid grey;
+
+        p {
+            font-size: 12px;
+            font-style: italic;
+
+            span {
+                margin: 0 5px;
+                cursor: default;
+            }
+        }
+
+        .clickable {
+            cursor: pointer;
+        }
+
+        .copy, .trademarks {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
     }
 }
