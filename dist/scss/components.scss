@@ -3,29 +3,6 @@
     height: 290px;
     z-index: 90;
 
-    .bannerAd {
-        background-color: $site-blue;
-        color: white;
-        height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-
-        span {
-            cursor: pointer;
-            text-decoration: underline;
-            margin: 0 5px;
-        }
-
-        .exitBanner {
-            color: white;
-            position: absolute;
-            right: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    }
 
     .middleNav {
         height: 96px;
@@ -91,12 +68,16 @@
                         height: 32px;
                     }
                 }
+
+                .cartButton {
+                    position: relative;
+                }
             }
         }
     }
 
 
-
+    
 
     .bottomLinks {
         width: 100%;
@@ -146,6 +127,30 @@
             font-weight: 100;
             font-size: 60px;
         }
+    }
+}
+
+.bannerAd {
+    background-color: $site-blue;
+    color: white;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    span {
+        cursor: pointer;
+        text-decoration: underline;
+        margin: 0 5px;
+    }
+
+    .exitBanner {
+        color: white;
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        font-size: 16px;
     }
 }
 
@@ -310,11 +315,26 @@ footer {
     }
 }
 
+.cartCounter {
+    position: absolute;
+    top: -12px;
+    right: -15px;
 
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    background-color: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .loginModal {
     position: absolute;
-    z-index: 99;
+    z-index: 95;
     width: 350px;
     height: 450px;
     bottom: -450px;
@@ -364,14 +384,60 @@ footer {
 
     .submitButton {
         width: 100%;
-        height: 30px;
+        height: 50px;
         border-radius: 20px;
         background-color: #3b2b2f;
         color: white;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 
 .hide {
     display: none;
+}
+
+.loggedInModal {
+    position: absolute;
+    z-index: 99;
+    width: 350px;
+    height: 450px;
+    bottom: -450px;
+    right: 0;
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px 30px;
+
+    .closeModal {
+        font-size: 16px;
+        margin-bottom: 0;
+        cursor: pointer;
+        i {
+            margin-right: 5px;
+        }
+    }
+
+    h1 {
+        margin-top: 30px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .logoutButton {
+        width: 100%;
+        height: 50px;
+        background-color: #3b2b2f;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 1px;
+        font-size: 20px;
+        border-radius: 25px;
+        cursor: pointer;
+    }
 }

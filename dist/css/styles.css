@@ -32,27 +32,6 @@ h1, h2, h3, h4, h5, h6, p {
   height: 290px;
   z-index: 90;
 }
-.navHolder .bannerAd {
-  background-color: #3d5a7b;
-  color: white;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.navHolder .bannerAd span {
-  cursor: pointer;
-  text-decoration: underline;
-  margin: 0 5px;
-}
-.navHolder .bannerAd .exitBanner {
-  color: white;
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
 .navHolder .middleNav {
   height: 96px;
   display: flex;
@@ -109,6 +88,9 @@ h1, h2, h3, h4, h5, h6, p {
   width: 32px;
   height: 32px;
 }
+.navHolder .middleNav .middleLinks .middleList .cartButton {
+  position: relative;
+}
 .navHolder .bottomLinks {
   width: 100%;
   height: 60px;
@@ -151,6 +133,28 @@ h1, h2, h3, h4, h5, h6, p {
 .navHolder .bottomBanner h1 {
   font-weight: 100;
   font-size: 60px;
+}
+
+.bannerAd {
+  background-color: #3d5a7b;
+  color: white;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.bannerAd span {
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0 5px;
+}
+.bannerAd .exitBanner {
+  color: white;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .seeDetails {
@@ -288,9 +292,25 @@ footer .footerFinal .copy, footer .footerFinal .trademarks {
   margin-top: 20px;
 }
 
+.cartCounter {
+  position: absolute;
+  top: -12px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
+  background-color: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loginModal {
   position: absolute;
-  z-index: 99;
+  z-index: 95;
   width: 350px;
   height: 450px;
   bottom: -450px;
@@ -335,15 +355,57 @@ footer .footerFinal .copy, footer .footerFinal .trademarks {
 }
 .loginModal .submitButton {
   width: 100%;
-  height: 30px;
+  height: 50px;
   border-radius: 20px;
   background-color: #3b2b2f;
   color: white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hide {
   display: none;
+}
+
+.loggedInModal {
+  position: absolute;
+  z-index: 99;
+  width: 350px;
+  height: 450px;
+  bottom: -450px;
+  right: 0;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px 30px;
+}
+.loggedInModal .closeModal {
+  font-size: 16px;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.loggedInModal .closeModal i {
+  margin-right: 5px;
+}
+.loggedInModal h1 {
+  margin-top: 30px;
+}
+.loggedInModal h2 {
+  font-size: 20px;
+}
+.loggedInModal .logoutButton {
+  width: 100%;
+  height: 50px;
+  background-color: #3b2b2f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  font-size: 20px;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .homePage {
@@ -386,14 +448,20 @@ footer .footerFinal .copy, footer .footerFinal .trademarks {
   font-weight: 500;
   margin-bottom: 0;
 }
+.homePage .cardHolder {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+}
 
 .card {
   width: 280px;
+  min-height: 493px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-left: 30px;
+  margin-left: 10px;
   margin-bottom: 30px;
 }
 .card .cardImg {
@@ -407,17 +475,16 @@ footer .footerFinal .copy, footer .footerFinal .trademarks {
   object-fit: cover;
 }
 .card h3 {
-  padding-left: 10px;
+  padding: 0 10px;
 }
 .card h2 {
   color: red;
   padding-left: 10px;
 }
-.card .buyNow {
+.card .buyNow, .card .removeItem {
   width: 100%;
   height: 40px;
-  background-color: cadetblue;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   color: white;
@@ -425,10 +492,103 @@ footer .footerFinal .copy, footer .footerFinal .trademarks {
   letter-spacing: 1.5px;
   cursor: pointer;
 }
+.card .buyNow {
+  background-color: #3d5a7b;
+}
+.card .removeItem {
+  background-color: #6e0607;
+}
 .card .buyNow:hover {
   transform: scale(1.1);
   transition: 0.4s;
   border-radius: 20px;
+}
+.card .removeItem:hover {
+  transform: scale(1.1);
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.card:hover > .buyNow {
+  display: flex;
+}
+
+.card:hover > .removeItem {
+  display: flex;
+}
+
+.cartPage {
+  width: 1200px;
+  margin: 30px auto 0 auto;
+}
+.cartPage .cartBannerAD {
+  width: 100%;
+  height: 200px;
+  background-image: url("../images/cartBanner.avif");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #24523b;
+  padding: 20px 0;
+}
+.cartPage .cartBannerAD .topContent {
+  text-align: center;
+}
+.cartPage .cartBannerAD .topContent h2 {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+.cartPage .cartBannerAD .topContent p {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.cartPage .cartBannerAD .middleContent {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.cartPage .cartBannerAD .middleContent .contentBox {
+  text-align: center;
+}
+.cartPage .cartBannerAD .middleContent .contentBox h3 {
+  margin: 0;
+  font-size: 16px;
+}
+.cartPage .cartBannerAD .middleContent .contentBox h4 {
+  font-weight: 500;
+}
+.cartPage .cartBannerAD .middleContent .divider {
+  width: 2px;
+  height: 100%;
+  border-right: 1px solid #24523b;
+}
+.cartPage .cartBannerAD .bottomContent {
+  font-style: italic;
+  font-size: 12px;
+}
+.cartPage .cartItems .itemCounter {
+  width: 100%;
+  margin: 20px 0 0 0;
+  letter-spacing: 3px;
+  font-weight: 400;
+  text-align: center;
+}
+.cartPage .cartItems .noItems {
+  font-size: 44px;
+  letter-spacing: 5px;
+  margin: 0 auto 200px auto;
+  font-weight: 400;
+  text-align: center;
+}
+.cartPage .cartItems .cartHolder {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */

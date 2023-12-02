@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
-import { changeRoute } from "../dist/services/services.js";
+import { changeRoute, getData, updateCartCounter } from "../dist/services/services.js";
 
 var logInOrSignUp = "login";
 
@@ -48,31 +48,40 @@ function initListeners() {
         $(".submitButton").html("CREATE AN ACCOUNT");
     })
     $(".accountButton").on("click", function () {
-        initLoginListeners();
+        if (auth.currentUser)
+        {
+            $(".loggedInModal").toggleClass("hide");
+        }
+        else
+        {
+            $(".loginModal").toggleClass("hide");
+        }
     })
     $(".closeModal").on("click", function () {
-        initLoginListeners();
+        $(".loginModal").addClass("hide");
+        $(".loggedInModal").addClass("hide");
     });
 
     $(".submitButton").on("click", function () {
+        console.log("clicked");
         accountHandler();
     })
+
+    $(".cartButton").on("click", function () {
+        window.location.hash = "cart";
+    })
+
+    $(".exitBanner").on("click", function () {
+        $(".bannerAd").addClass("hide");
+    })
+
+    $(".logoutButton").on("click", function () {
+        auth.signOut();
+        $(".loginModal").addClass("hide");
+        $(".loggedInModal").addClass("hide");
+    })
+
     window.addEventListener("hashchange", changeRoute);
-}
-
-function initLoginListeners() {
-    if ($(".loginModal").hasClass("hide")) {
-        $(".accountButton").on("click", openModal);
-        $(".closeModal").off("click", ".closeModal", openModal);
-    }
-    else {
-        $(".closeModal").on("click", openModal);
-        $(".accountButton").off("click", ".accountButton", openModal);
-    }
-}
-
-function openModal() {
-    $(".loginModal").toggleClass("hide");
 }
 
 export function accountHandler() {
@@ -97,7 +106,8 @@ export function accountHandler() {
         })
 
         console.log("sign up username: " + user.displayName);
-
+        $(".loggedInModal h1").html(`Hello, ${user.displayName}`);
+        $(".loggedInModal").removeClass("hide");
         // ...
         })
         .catch((error) => {
@@ -112,7 +122,9 @@ export function accountHandler() {
         signInWithEmailAndPassword(auth, emailAddress, password)
         .then((userCredential) => {
             const user = userCredential.user;
-
+            console.log("log in username: " + user.displayName);
+            $(".loggedInModal h1").html(`Hello, ${user.displayName}`);
+            $(".loggedInModal").removeClass("hide");
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -124,6 +136,7 @@ export function accountHandler() {
 
 $(document).ready(function () {
     initListeners();
-    initLoginListeners();
+    getData();
     changeRoute();
+    updateCartCounter();
 });
