@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { changeRoute } from "../dist/services/services.js";
 
 var logInOrSignUp = "login";
 
@@ -32,24 +33,55 @@ onAuthStateChanged(auth, (user) => {
 function initListeners() {
     $(".loginToggle").on("click", function () {
         logInOrSignUp = "logIn";
+        $(".loginToggle").addClass("activeToggle");
+        $(".signUpToggle").removeClass("activeToggle");
+        $("#firstName").addClass("hide");
+        $("#lastName").addClass("hide");
+        $(".submitButton").html("SIGN IN");
     })
     $(".signUpToggle").on("click", function () {
         logInOrSignUp = "signUp";
+        $(".signUpToggle").addClass("activeToggle");
+        $(".loginToggle").removeClass("activeToggle");
+        $("#firstName").removeClass("hide");
+        $("#lastName").removeClass("hide");
+        $(".submitButton").html("CREATE AN ACCOUNT");
+    })
+    $(".accountButton").on("click", function () {
+        initLoginListeners();
+    })
+    $(".closeModal").on("click", function () {
+        initLoginListeners();
+    });
+
+    $(".submitButton").on("click", function () {
+        accountHandler();
     })
     window.addEventListener("hashchange", changeRoute);
 }
 
+function initLoginListeners() {
+    if ($(".loginModal").hasClass("hide")) {
+        $(".accountButton").on("click", openModal);
+        $(".closeModal").off("click", ".closeModal", openModal);
+    }
+    else {
+        $(".closeModal").on("click", openModal);
+        $(".accountButton").off("click", ".accountButton", openModal);
+    }
+}
+
+function openModal() {
+    $(".loginModal").toggleClass("hide");
+}
+
 export function accountHandler() {
 
-    // Sign up inputs
-    let emailAddress = $("#emailSU").val();
-    let firstName = $("#firstNameSU").val();
-    let lastName = $("#lastNameSU").val();
-    let password = $("#passwordSU").val();
-
-    // Login Inputs
-    let loginEmail = $("#loginEmail").val();
-    let loginPassword = $("#loginPassword").val();
+    // inputs
+    let emailAddress = $("#email").val();
+    let firstName = $("#firstName").val();
+    let lastName = $("#lastName").val();
+    let password = $("#password").val();
 
     if (logInOrSignUp === 'signUp')
     {
@@ -77,7 +109,7 @@ export function accountHandler() {
     }
     else if (logInOrSignUp === 'login')
     {
-        signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+        signInWithEmailAndPassword(auth, emailAddress, password)
         .then((userCredential) => {
             const user = userCredential.user;
 
@@ -92,5 +124,6 @@ export function accountHandler() {
 
 $(document).ready(function () {
     initListeners();
+    initLoginListeners();
     changeRoute();
 });
